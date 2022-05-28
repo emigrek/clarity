@@ -3,8 +3,8 @@ import { setGlobalState, useGlobalState } from '../state'
 
 function Header() {
     const [version] = useGlobalState("version");
+    const [locale] = useGlobalState("locale");
     const [locales] = useGlobalState("locales");
-    const [locale] = useGlobalState("locales");
 
     const handleLocaleChange = (e) => {
         setGlobalState("locale", e.target.value);

@@ -5,6 +5,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     spell: null,
     locale: "en_US",
     locales: null,
+    randomChampion: null,
     champions: null,
     version: null
 });
