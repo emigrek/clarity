@@ -78,7 +78,7 @@ function Spell() {
     return (
       <div className="flex flex-row align-middle justify-center text-center">
         <div className="w-64 lg:w-80 md:w-80 sm:w-64 bg-black bg-opacity-50 rounded-lg flex flex-col align-middle justify-center text-center p-5">
-          <div className="text-2xl">Loading...</div>
+          <div className="text-2xl">Loading spell...</div>
         </div>
       </div>
     )
