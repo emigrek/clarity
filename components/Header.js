@@ -20,9 +20,9 @@ function Header() {
 
     return (
         <div className='opacity-50 hover:opacity-100 transition-all absolute top-1 right-1'>
-            <div className='flex flex-row items-center justify-center gap-1'>
+            <div className='flex flex-row items-center justify-center gap-2'>
                 <a href="https://github.com/emigrek/clarity" target="_blank" rel="noopener noreferrer">
-                    <div className="relative w-10 h-10">
+                    <div className="relative w-8 h-8 mt-1">
                         <Image layout="fill" src={'/github.png'}/>
                     </div>
                 </a>
