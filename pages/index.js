@@ -29,9 +29,9 @@ export default function Home() {
   return (
     <div className="bg-neutral-900 text-white">
       <Head>
-        <title>Clarity</title>
+        <title>Spellz</title>
         <meta name="description" content="Train your spell knowledge" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/ico.ico" />
       </Head>
       <Header/>
       <div className='flex justify-center w-screen h-screen'>
