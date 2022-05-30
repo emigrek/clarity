@@ -90,7 +90,7 @@ function Spell() {
           <Image priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
         </div>
         <div className="bg-black bg-opacity-50 p-4 rounded-b-2xl">
-          <div className="text-xl font-medium p-2 ">{spell.name}</div>
+          <div className="text-md font-medium p-2 ">{spell.name}</div>
         </div>
       </div>
     </div>

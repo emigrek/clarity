@@ -12,7 +12,7 @@ function Input() {
     if(spell)
         return (
             <div>
-                <input placeholder="Guess ✨" className='bg-black bg-opacity-50 outline-none p-4 text-center rounded-2xl shadow-2xl text-gray-400' value={input} onChange={handleInputChange}/>
+                <input placeholder="✨ your guess ✨" className='placeholder:opacity-40 bg-black bg-opacity-50 outline-none p-4 text-center rounded-2xl shadow-2xl text-gray-200' value={input} onChange={handleInputChange}/>
             </div>
         )
 }
