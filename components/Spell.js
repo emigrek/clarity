@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 import { useEffect } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
@@ -76,18 +77,20 @@ function Spell() {
   if(!spell) 
     return (
       <div className="flex flex-row align-middle justify-center text-center">
-        <div className="w-64 lg:w-80 md:w-80 sm:w-64 bg-black bg-opacity-50 rounded-r-lg flex flex-col align-middle justify-center text-center p-5">
-          <div className="text-2xl">Clarity</div>
+        <div className="w-64 lg:w-80 md:w-80 sm:w-64 bg-black bg-opacity-50 rounded-lg flex flex-col align-middle justify-center text-center p-5">
+          <div className="text-2xl">Loading...</div>
         </div>
       </div>
     )
 
   return (
-    <div className="flex flex-row justify-center align-middle text-center">
-      <div className="flex flex-col justify-center align-middle rounded-2xl shadow-xl">
-        <img className="h-80 w-80 rounded-t-2xl" src={spell.imageUrl}></img>
-        <div className="bg-black bg-opacity-50 p-5 rounded-b-2xl">
-          <div className="text-xl font-bold p-2 bg-black rounded-2xl bg-opacity-50">{spell.name}</div>
+    <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
+      <div className="flex flex-col justify-center align-middle shadow-2xl">
+        <div className="relative w-80 h-80">
+          <Image priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
+        </div>
+        <div className="bg-black bg-opacity-50 p-4 rounded-b-2xl">
+          <div className="text-xl font-medium p-2 ">{spell.name}</div>
         </div>
       </div>
     </div>

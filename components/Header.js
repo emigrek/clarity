@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { setGlobalState, useGlobalState } from '../state'
 
 function Header() {
@@ -10,20 +11,27 @@ function Header() {
         setGlobalState("locale", e.target.value);
     };
 
+    useEffect(() => {
+        var browserLang = navigator.language.replace("-", "_");
+        setGlobalState("locale", browserLang);
+    }, []);
+
     return (
         <div className='opacity-50 absolute top-1 right-1'>
-            <div>{version}</div>
-            <div>
-                {   locales ? (
-                        <select onChange={handleLocaleChange} placeholder={locale} className="bg-black">
-                            {
-                                locales.map((l) => <option key={l} value={l}>{l}</option>)
-                            }
-                        </select>
-                    ) : (
-                        <div>loading locales...</div>
-                    )
-                }
+            <div className='flex flex-col text-center'>
+                <div>{version}</div>
+                <div>
+                    {   locales ? (
+                            <select onChange={handleLocaleChange} defaultValue={locale} className="bg-black rounded-md">
+                                {
+                                    locales.map((l) => <option key={l} value={l}>{l}</option>)
+                                }
+                            </select>
+                        ) : (
+                            <div>loading locales...</div>
+                        )
+                    }
+                </div>
             </div>
         </div>
     )
