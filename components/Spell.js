@@ -87,12 +87,12 @@ function Spell() {
   if(spell) 
     return (
       <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
-        <div className="flex flex-col justify-center align-middle shadow-2xl">   
+        <div className="flex flex-col justify-center align-middle shadow-lg">   
           <div className="relative w-64 h-64 lg:w-80 lg:h-80">
             <SpellLoader visible={imageLoading}/>
             <Image onLoad={() => setImageLoading(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
           </div> 
-          <div className="bg-black bg-opacity-50 p-4">
+          <div className="bg-black bg-opacity-50 p-5">
             <div className="text-sm lg:text-md font-medium p-2">{spell.name}</div>
           </div>
         </div>
