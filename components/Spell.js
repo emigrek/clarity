@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import React from 'react'
 import { useEffect } from 'react'
+import { useState } from 'react';
 import { setGlobalState, useGlobalState } from '../state'
+import { motion, AnimatePresence } from "framer-motion"
+
+import SpellLoader from './SpellLoader';
+
 
 function Spell() {
   const [version] = useGlobalState("version");
@@ -9,6 +14,8 @@ function Spell() {
   const [spell] = useGlobalState("spell");
   const [champions] = useGlobalState("champions");
   const [input] = useGlobalState("input");
+
+  const [imageLoading, setImageLoading] = useState(false);
 
   function getRandomChampion() {
     var keys = Object.keys(champions);
@@ -60,6 +67,7 @@ function Spell() {
   useEffect(() => {
     if(!champions) return;
 
+    setImageLoading(true);
     var champ = getRandomChampion();
     getRandomSpell(champ);
   }, [champions])
@@ -69,32 +77,27 @@ function Spell() {
 
     if(input.toLowerCase().includes(spell.champion.toLowerCase())) {
       setGlobalState("input", '');
+
+      setImageLoading(true);
       var champ = getRandomChampion();
       getRandomSpell(champ);
     }
   }, [input])
 
-  if(!spell) 
+  if(spell) 
     return (
-      <div className="flex flex-row align-middle justify-center text-center">
-        <div className="w-64 lg:w-80 md:w-80 sm:w-64 bg-black bg-opacity-50 rounded-lg flex flex-col align-middle justify-center text-center p-5">
-          <div className="text-2xl">Loading spell...</div>
+      <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
+        <div className="flex flex-col justify-center align-middle shadow-2xl">   
+          <div className="relative w-64 h-64 lg:w-80 lg:h-80">
+            <SpellLoader visible={imageLoading}/>
+            <Image onLoad={() => setImageLoading(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
+          </div> 
+          <div className="bg-black bg-opacity-50 p-4">
+            <div className="text-sm lg:text-md font-medium p-2">{spell.name}</div>
+          </div>
         </div>
       </div>
     )
-
-  return (
-    <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
-      <div className="flex flex-col justify-center align-middle shadow-2xl">
-        <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-          <Image priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
-        </div>
-        <div className="bg-black bg-opacity-50 p-4 rounded-b-2xl">
-          <div className="text-md font-medium p-2 ">{spell.name}</div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 export default Spell

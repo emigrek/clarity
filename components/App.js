@@ -21,7 +21,7 @@ function App() {
     }, [version, locale]);
 
     return (
-        <div className="flex flex-col align-middle justify-center text-center gap-7">
+        <div className="flex flex-col align-middle justify-center">
             <Spell/>
             <Input/>
         </div>
