@@ -12,8 +12,9 @@ function Input() {
     if(spell)
         return (
             <input 
+                autoFocus
                 placeholder="✨ your guess ✨" 
-                className='placeholder:opacity-40 bg-black bg-opacity-20 outline-none p-4 text-center rounded-b-2xl text-gray-200 border-2 border-black border-opacity-30 shadow-lg' 
+                className='placeholder:opacity-40 bg-black bg-opacity-20 outline-none p-4 text-center rounded-b-2xl text-gray-200 border-b-2 border-black border-opacity-25 shadow-lg' 
                 value={input} 
                 onChange={handleInputChange}
             />

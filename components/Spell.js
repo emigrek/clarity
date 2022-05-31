@@ -92,7 +92,7 @@ function Spell() {
             <SpellLoader visible={imageLoading}/>
             <Image onLoad={() => setImageLoading(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
           </div> 
-          <div className="bg-black bg-opacity-50 p-4 border-l-2 border-r-2 border-black border-opacity-10">
+          <div className="bg-black bg-opacity-50 p-4">
             <div className="text-sm lg:text-md font-medium p-2">{spell.name}</div>
           </div>
         </div>
