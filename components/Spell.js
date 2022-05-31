@@ -86,7 +86,7 @@ function Spell() {
   return (
     <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
       <div className="flex flex-col justify-center align-middle shadow-2xl">
-        <div className="relative w-80 h-80">
+        <div className="relative w-64 h-64 lg:w-80 lg:h-80">
           <Image priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
         </div>
         <div className="bg-black bg-opacity-50 p-4 rounded-b-2xl">
