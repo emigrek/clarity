@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
-import SpellLoader from './SpellLoader';
 
+import SpellLoader from './SpellLoader';
+import SpellDetails from './SpellDetails';
 import ddragon from '../modules/ddragon';
 
 
@@ -15,12 +15,13 @@ function Spell() {
   const [champions] = useGlobalState("champions");
   const [input] = useGlobalState("input");
 
-  const [imageLoading, setImageLoading] = useState(false);
+  const [spellLoader, setSpellLoader] = useState(false);
+  const [spellDetails, setSpellDetails] = useState(false);
 
   useEffect(() => {
     if(!champions) return;
 
-    setImageLoading(true);
+    setSpellLoader(true);
 
     var champ = ddragon.getRandomChampion(champions);
     ddragon.getRandomChampionSpell(version, locale, champ, champions);
@@ -32,10 +33,14 @@ function Spell() {
 
     if(input.toLowerCase().includes(spell.champion.toLowerCase())) {
       setGlobalState("input", '');
+      setSpellDetails(true);
 
-      setImageLoading(true);
-      var champ = ddragon.getRandomChampion(champions);
-      ddragon.getRandomChampionSpell(version, locale, champ, champions);
+      setTimeout(() => {
+        setSpellDetails(false);
+        setSpellLoader(true);
+        var champ = ddragon.getRandomChampion(champions);
+        ddragon.getRandomChampionSpell(version, locale, champ, champions);
+      }, 5*1000);
     }
   }, [input])
 
@@ -44,8 +49,9 @@ function Spell() {
       <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
         <div className="flex flex-col justify-center align-middle shadow-lg">   
           <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-            <SpellLoader visible={imageLoading}/>
-            <Image onLoad={() => setImageLoading(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
+            <SpellDetails visible={spellDetails}/>
+            <SpellLoader visible={spellLoader}/>
+            <Image onLoad={() => setSpellLoader(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
           </div> 
           <div className="bg-black bg-opacity-50 p-4">
             <div className="text-sm lg:text-md font-medium p-2">{spell.name}</div>
