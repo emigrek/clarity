@@ -1,23 +1,18 @@
 import React from 'react'
 import {useEffect} from 'react';
-import { setGlobalState, useGlobalState } from '../state'
+import { useGlobalState } from '../state'
 import Input from './Input';
 import Spell from './Spell';
+
+import ddragon from '../modules/ddragon';
 
 function App() {
     const [locale] = useGlobalState("locale");
     const [version] = useGlobalState("version");
 
-    async function getChampions() {
-        const url = `https://ddragon.leagueoflegends.com/cdn/${version}/data/${locale}/champion.json`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setGlobalState("champions", data.data);
-    }
-
     useEffect(() => {
         if(!version) return;
-        getChampions();
+        ddragon.getChampions(version, locale);
     }, [version, locale]);
 
     return (
