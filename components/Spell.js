@@ -32,10 +32,12 @@ function Spell() {
     if(!spell) return;
 
     if(input.toLowerCase().includes(spell.champion.toLowerCase())) {
-      setGlobalState("input", '');
+      setGlobalState("inputDisabled", true);
       setSpellDetails(true);
 
       setTimeout(() => {
+        setGlobalState("input", '');
+        setGlobalState("inputDisabled", false);
         setSpellDetails(false);
         setSpellLoader(true);
         var champ = ddragon.getRandomChampion(champions);

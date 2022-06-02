@@ -17,7 +17,7 @@ function SpellDetails({visible}) {
                     exit={{ opacity: 0 }}
                 >
                     <div className='flex flex-col align-center items-center justify-center w-64 h-64 lg:w-80 lg:h-80 p-4 gap-3'>
-                        <div className='relative w-16 h-16 lg:w-24 lg:h-24'>
+                        <div className='relative w-16 h-16 lg:w-24 lg:h-24 shadow-md'>
                             <Image priority layout="fill" className="rounded-md" src={spell.imageUrl}/>
                         </div>
                         <div className="bg-black bg-opacity-50 rounded-md p-2 text-slate-200 text-xs xl:text-sm">
