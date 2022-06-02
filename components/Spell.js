@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import React from 'react'
 import { useEffect, useState } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
+import moment from 'moment';
 
 import SpellLoader from './SpellLoader';
 import SpellDetails from './SpellDetails';
@@ -14,9 +14,11 @@ function Spell() {
   const [spell] = useGlobalState("spell");
   const [champions] = useGlobalState("champions");
   const [input] = useGlobalState("input");
+  const [responseTimes] = useGlobalState("responseTimes");
 
   const [spellLoader, setSpellLoader] = useState(false);
   const [spellDetails, setSpellDetails] = useState(false);
+  const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
     if(!champions) return;
@@ -25,13 +27,18 @@ function Spell() {
 
     var champ = ddragon.getRandomChampion(champions);
     ddragon.getRandomChampionSpell(version, locale, champ, champions);
-  }, [champions])
+  }, [champions]);
 
-  
+  useEffect(() => {
+    setStartTime(moment());
+  }, [spell]);
+
   useEffect(() => {
     if(!spell) return;
 
     if(input.toLowerCase().includes(spell.champion.toLowerCase())) {
+      setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
+      setStartTime(null);
       setGlobalState("inputDisabled", true);
       setSpellDetails(true);
 
@@ -44,7 +51,7 @@ function Spell() {
         ddragon.getRandomChampionSpell(version, locale, champ, champions);
       }, 5*1000);
     }
-  }, [input])
+  }, [input]);
 
   if(spell) 
     return (

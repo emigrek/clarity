@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react';
 import { setGlobalState, useGlobalState } from '../state'
 import Image from 'next/image';

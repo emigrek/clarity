@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { useGlobalState } from '../state'
+
 import Input from './Input';
 import Spell from './Spell';
+import Statistics from './Statistics';
 
 import ddragon from '../modules/ddragon';
+
 
 function App() {
     const [locale] = useGlobalState("locale");
@@ -18,6 +21,7 @@ function App() {
         <div className="flex flex-col align-middle justify-center">
             <Spell/>
             <Input/>
+            <Statistics/>
         </div>
     )
 }
