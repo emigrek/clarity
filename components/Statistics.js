@@ -11,7 +11,7 @@ function Statistics() {
 
     if(responseTimes.length)
         return (
-            <div className="flex flex-row space-x-3 items-center justify-center text-center text-sm mt-1 opacity-20 font-light">
+            <div className="flex flex-row space-x-1 items-center justify-center text-center text-sm mt-1 opacity-20 font-light">
                 <div>
                     last: <span>{_.round(responseTimes[0]/1000, 2)}s</span>
                 </div>
