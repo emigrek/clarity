@@ -5,7 +5,7 @@ function SpellLoader({visible}) {
         <AnimatePresence>
             { visible &&
                 <motion.div className="absolute bg-black rounded-t-2xl z-10 bg-opacity-70 backdrop-blur-md w-72 h-72 lg:w-80 lg:h-80 transition-all"
-                    initial={{ opacity: 0.1 }}
+                    initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
                     transition={{ ease: "easeInOut", duration: 0.2 }}
                     exit={{ opacity: 0 }}
