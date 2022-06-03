@@ -1,4 +1,4 @@
-import { useGlobalState } from '../state'
+import { setGlobalState, useGlobalState } from '../state'
 import _ from 'lodash';
 
 function Statistics() {
@@ -11,7 +11,7 @@ function Statistics() {
 
     if(responseTimes.length)
         return (
-            <div className="flex flex-row space-x-2 items-center justify-center text-center text-sm mt-1 opacity-20 font-light pointer-events-none select-none">
+            <div onClick={() => setGlobalState('responseTimes', [])} className="flex flex-row space-x-2 items-center justify-center text-center text-sm mt-1 opacity-20 font-light select-none cursor-pointer">
                 <div>
                     correct: <span>{responseTimes.length}</span>
                 </div>

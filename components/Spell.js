@@ -15,55 +15,57 @@ function Spell() {
   const [champions] = useGlobalState("champions");
   const [input] = useGlobalState("input");
   const [responseTimes] = useGlobalState("responseTimes");
+  const [spellLoader] = useGlobalState("spellLoader");
+  const [spellDetails] = useGlobalState("spellDetails");
 
-  const [spellLoader, setSpellLoader] = useState(false);
-  const [spellDetails, setSpellDetails] = useState(false);
   const [startTime, setStartTime] = useState(null);
 
-  useEffect(() => {
-    if(!champions) return;
-
-    setSpellLoader(true);
-
+  const showRandomSpell = () => {
+    setGlobalState("spellLoader", true);
+    setGlobalState("spellDetails", false);
+    setGlobalState("input", '');
+    
     var champ = ddragon.getRandomChampion(champions);
     ddragon.getRandomChampionSpell(version, locale, champ, champions);
-  }, [champions]);
+  }
 
   useEffect(() => {
     setStartTime(moment());
   }, [spell]);
 
   useEffect(() => {
-    if(!spell) return;
+    if(!champions) return;
+
+    showRandomSpell();
+  }, [champions]);
+
+  useEffect(() => {
+    if(!spell || spellDetails) return;
 
     if(input.toLowerCase().includes(spell.champion.toLowerCase())) {
       setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
       setStartTime(null);
-      setGlobalState("inputDisabled", true);
-      setSpellDetails(true);
+      setGlobalState("spellDetails",true);
 
-      setTimeout(() => {
-        setGlobalState("input", '');
-        setGlobalState("inputDisabled", false);
-        setSpellDetails(false);
-        setSpellLoader(true);
-        var champ = ddragon.getRandomChampion(champions);
-        ddragon.getRandomChampionSpell(version, locale, champ, champions);
-      }, 5*1000);
+      setGlobalState("spellDetailsTimeout",
+        setTimeout(() => {
+          showRandomSpell();
+        }, 5*1000)
+      );
     }
   }, [input]);
 
   if(spell) 
     return (
       <div className="flex flex-row justify-center align-middle text-center pointer-events-none select-none">
-        <div className="flex flex-col justify-center align-middle shadow-lg">   
-          <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-            <SpellDetails visible={spellDetails}/>
+        <div className="flex flex-col justify-start align-middle">   
+          <div className="relative w-72 h-72 lg:w-80 lg:h-80">
+            <SpellDetails visible={spellDetails} showRandomSpell={showRandomSpell}/>
             <SpellLoader visible={spellLoader}/>
-            <Image onLoad={() => setSpellLoader(false)} priority layout="fill" className="rounded-t-2xl" src={spell.imageUrl}/>
+            <Image onLoad={() => setGlobalState('spellLoader',false)} priority layout="fill" className="rounded-t-3xl" src={spell.imageUrl}/>
           </div> 
-          <div className="bg-black bg-opacity-50 p-4">
-            <div className="text-sm lg:text-md font-medium p-2">{spell.name}</div>
+          <div className="bg-black bg-opacity-40 p-5">
+            <div className="text-sm lg:text-md font-medium">{spell.name}</div>
           </div>
         </div>
       </div>

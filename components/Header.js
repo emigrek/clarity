@@ -17,8 +17,8 @@ function Header() {
     }, []);
 
     return (
-        <div className='opacity-50 hover:opacity-100 transition-all absolute top-1 right-1'>
-            <div className='flex flex-row items-center justify-center gap-2'>
+        <div className='z-50 opacity-50 hover:opacity-100 transition-all absolute top-1 right-1'>
+            <div className='flex flex-row items-center justify-center space-x-2'>
                 <a href="https://github.com/emigrek/spellz" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-8 h-8 mt-1">
                         <Image layout="fill" src={'/github.png'}/>

@@ -19,8 +19,10 @@ function App() {
 
     return (
         <div className="flex flex-col align-middle justify-center">
-            <Spell/>
-            <Input/>
+            <div className='shadow-xl rounded-3xl'>
+                <Spell/>
+                <Input/>
+            </div>
             <Statistics/>
         </div>
     )
