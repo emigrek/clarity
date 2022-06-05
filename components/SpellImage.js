@@ -9,10 +9,10 @@ function SpellImage() {
 
     useEffect(() => {
         average(spell.imageUrl, { format: 'hex' }).then(color => {
-            var color = chroma(color).darken(1.5);
+            var color = chroma(color);
 
-            if(color.luminance() <= 0.01)
-                color = color.brighten(1.2);
+            while(color.luminance() > 0.03)
+                color = color.darken(0.5);
 
             setGlobalState('bgColor', color)
         });
