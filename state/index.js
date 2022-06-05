@@ -11,7 +11,8 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     locales: null,
     randomChampion: null,
     champions: null,
-    version: null
+    version: null,
+    bgColor: '#171717'
 });
 
 export { setGlobalState, useGlobalState };

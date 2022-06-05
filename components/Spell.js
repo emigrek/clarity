@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 import { useEffect, useState } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
 import moment from 'moment';
@@ -6,6 +6,7 @@ import moment from 'moment';
 import SpellLoader from './SpellLoader';
 import SpellDetails from './SpellDetails';
 import ddragon from '../modules/ddragon';
+import SpellImage from './SpellImage';
 
 
 function Spell() {
@@ -62,9 +63,9 @@ function Spell() {
           <div className="relative w-72 h-72 lg:w-80 lg:h-80">
             <SpellDetails visible={spellDetails} showRandomSpell={showRandomSpell}/>
             <SpellLoader visible={spellLoader}/>
-            <Image onLoad={() => setGlobalState('spellLoader',false)} priority layout="fill" className="rounded-t-3xl" src={spell.imageUrl}/>
+            <SpellImage/>
           </div> 
-          <div className="bg-black bg-opacity-40 p-5">
+          <div className="bg-black bg-opacity-50 p-5">
             <div className="text-sm lg:text-md font-medium">{spell.name}</div>
           </div>
         </div>

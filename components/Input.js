@@ -38,8 +38,8 @@ function Input() {
 
     if(spell)
         return (
-            <div className='flex justify-center items-center flex-col bg-black bg-opacity-40 rounded-b-3xl'>
-                <div className='py-5 w-10/12 flex justify-center flex-col border-t border-zinc-900'>
+            <div className='flex justify-center items-center flex-col bg-black bg-opacity-50 rounded-b-3xl'>
+                <div className='py-5 w-10/12 flex justify-center flex-col border-t border-white border-opacity-10'>
                     <input
                         ref={inputRef}
                         placeholder="Guess (enter to skip)" 

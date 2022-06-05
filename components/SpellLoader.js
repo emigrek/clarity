@@ -10,7 +10,7 @@ function SpellLoader({visible}) {
                     transition={{ ease: "easeInOut", duration: 0.2 }}
                     exit={{ opacity: 0 }}
                 >
-                    <div className='flex align-center items-center justify-center w-64 h-64 lg:w-80 lg:h-80'>
+                    <div className='flex align-center items-center justify-center w-72 h-72 lg:w-80 lg:h-80'>
                         <div className='text-8xl animate-pulse'>✨</div>
                     </div>
                 </motion.div>

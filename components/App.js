@@ -19,7 +19,7 @@ function App() {
 
     return (
         <div className="flex flex-col align-middle justify-center">
-            <div className='shadow-xl rounded-3xl'>
+            <div className='shadow-lg rounded-3xl'>
                 <Spell/>
                 <Input/>
             </div>

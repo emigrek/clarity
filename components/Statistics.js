@@ -11,7 +11,7 @@ function Statistics() {
 
     if(responseTimes.length)
         return (
-            <div onClick={() => setGlobalState('responseTimes', [])} className="flex flex-row space-x-2 items-center justify-center text-center text-sm mt-1 opacity-20 font-light select-none cursor-pointer">
+            <div onClick={() => setGlobalState('responseTimes', [])} className="flex flex-row space-x-2 items-center justify-center text-center text-sm mt-1 opacity-30 font-light select-none cursor-pointer">
                 <div>
                     correct: <span>{responseTimes.length}</span>
                 </div>
