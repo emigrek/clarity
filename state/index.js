@@ -7,7 +7,10 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     spellLoader: false,
     spellDetails: false,
     spellDetailsTimeout: null,
-    locale: "en_US",
+    locale: {
+        code: "en_US",
+        language: "English (United States)"
+    },
     locales: null,
     randomChampion: null,
     champions: null,

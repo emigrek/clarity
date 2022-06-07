@@ -6,9 +6,10 @@ import chroma from "chroma-js"
 
 function SpellImage() {
     const [spell] = useGlobalState("spell");
+    const [version] = useGlobalState("version");
 
     useEffect(() => {
-        average(spell.imageUrl, { format: 'hex' }).then(color => {
+        average(`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`, { format: 'hex' }).then(color => {
             var color = chroma(color);
 
             while(color.luminance() > 0.03)
@@ -19,11 +20,9 @@ function SpellImage() {
     }, [spell])
 
     return (
-        <div>
-            <Image onLoad={() => {
-                setGlobalState('spellLoader',false);
-            }} priority layout="fill" className="rounded-t-3xl" src={spell.imageUrl}/>
-        </div>
+        <Image onLoad={() => {
+            setGlobalState('spellLoader',false);
+        }} priority layout="fill" className="rounded-t-3xl" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
     )
 }
 

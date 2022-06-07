@@ -27,8 +27,10 @@ function Input() {
         setGlobalState("spellDetails", false);
         setGlobalState("input", '');
         
-        var champ = ddragon.getRandomChampion(champions);
-        ddragon.getRandomChampionSpell(version, locale, champ, champions);
+        const champ = ddragon.getRandomChampion(champions);
+        const spells = ddragon.getChampionSpells(champ, champions);
+        const spell = _.shuffle(spells).pop();
+        setGlobalState("spell", spell);
     }
 
     useEffect(() => {

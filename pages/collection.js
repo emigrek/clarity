@@ -1,31 +1,27 @@
 import { useEffect } from 'react';
 import { useGlobalState } from '../state'
-
-import Input from './Input';
-import Spell from './Spell';
-import Statistics from './Statistics';
-
 import ddragon from '../modules/ddragon';
 
-
-function App() {
+function Collection() {
     const [locale] = useGlobalState("locale");
     const [version] = useGlobalState("version");
+    const [champions] = useGlobalState("champions");
 
     useEffect(() => {
         if(!version) return;
         ddragon.getChampions(version, locale);
-    }, [version, locale]);
+    }, [locale]);
+
+    useEffect(() => {
+      if(!champions) return;
+      console.log(champions);
+    }, [champions]);
 
     return (
         <div className="flex flex-col align-middle justify-center">
-            <div className='shadow-lg rounded-3xl'>
-                <Spell/>
-                <Input/>
-            </div>
-            <Statistics/>
+            Collection
         </div>
     )
 }
 
-export default App
+export default Collection

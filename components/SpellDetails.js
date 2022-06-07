@@ -5,6 +5,7 @@ import { stripHtml } from "string-strip-html";
 
 function SpellDetails({visible, showRandomSpell}) {
     const [spell] = useGlobalState("spell");
+    const [version] = useGlobalState("version");
     const [spellDetailsTimeout] = useGlobalState("spellDetailsTimeout");
 
     return (
@@ -24,7 +25,7 @@ function SpellDetails({visible, showRandomSpell}) {
                 >
                     <div className='flex flex-col justify-evenly items-center p-5 space-y-2 w-72 h-72 lg:w-80 lg:h-80'>
                         <div className='relative w-20 h-20 lg:w-24 lg:h-24 shadow-lg'>
-                            <Image priority layout="fill" className="rounded-lg" src={spell.imageUrl}/>
+                            <Image priority layout="fill" className="rounded-lg" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
                         </div>
                         <div>
                             <div className="bg-black bg-opacity-60 rounded-md p-2 text-slate-200 text-xs xl:text-sm shadow-lg">

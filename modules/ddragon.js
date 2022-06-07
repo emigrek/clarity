@@ -2,9 +2,7 @@ import { setGlobalState } from "../state/";
 import _ from 'lodash';
 
 const championIdToName = (id, champions) => {
-    return Object.keys(champions).map(key => {
-        return champions[key];
-    }).find(x => x.id === id).name;
+    return champions.find(x => x.id === id).name;
 }
 
 const getVersion = async () => {
@@ -15,61 +13,39 @@ const getVersion = async () => {
 }
 
 const getLocales = async () => {
-    const url = "https://ddragon.leagueoflegends.com/cdn/languages.json";
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await getLangCodes();
     setGlobalState("locales", data);
+    return data;
 }
 
+const getLangCodes = async () => {
+    const url = "/langs.json";
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
+ 
 const getChampions = async (version, locale) => {
-    const url = `https://ddragon.leagueoflegends.com/cdn/${version}/data/${locale}/champion.json`;
+    const url = `https://ddragon.leagueoflegends.com/cdn/${version}/data/${locale.code}/championFull.json`;
     const response = await fetch(url);
     const data = await response.json();
-    setGlobalState("champions", data.data);
+    const champions = Object.keys(data.data).map(key => {
+        return data.data[key];
+    })
+    setGlobalState("champions", champions);
 }
 
-const getChampionSpells = async (version, locale, champion) => {
-    const url = `https://ddragon.leagueoflegends.com/cdn/${version}/data/${locale}/champion/${champion}.json`;
-    const response = await fetch(url);
-    const data = await response.json();
-    var spells = [];
-        
-    data.data[champion].spells.forEach(skill => {
-      spells.push({
-            type: 'spell',
-            id: skill.id,
-            name: skill.name,
-            description: skill.description
-        });
+const getChampionSpells = (champion, data) => {
+    var champion = data.find(x => x.id == champion.id);
+    champion.passive.owner = champion;
+    champion.spells.forEach(spell => {
+        spell.owner = champion;
     });
-
-    var passive = data.data[champion].passive;
-      spells.push({
-        type: 'passive',
-        id: passive.image.full.replace(/\.[^/.]+$/, ""),
-        name: passive.name,
-        description: passive.description
-    });
-    
-    return spells;  
-}
-
-const getSpellImageUrl = (version, type, id) => {
-    return `https://ddragon.leagueoflegends.com/cdn/${version}/img/${type}/${id}.png`
-}
-
-const getRandomChampionSpell = async (version, locale, champion, champions) => {
-    getChampionSpells(version, locale, champion).then((spells) => {
-        var randomSpell = _.shuffle(spells).pop();
-        randomSpell.imageUrl = getSpellImageUrl(version, randomSpell.type, randomSpell.id);
-        randomSpell.champion = championIdToName(champion, champions);
-        setGlobalState("spell", randomSpell);
-    });
+    return [champion.passive, ...champion.spells];
 }
 
 const getRandomChampion = (champions) => {
-    var keys = Object.keys(champions);
-    return champions[keys[ keys.length * Math.random() << 0]].id;
+    return _.shuffle(champions).pop();
 }
 
 
@@ -79,7 +55,6 @@ export default {
     getLocales,
     getChampions,
     getChampionSpells,
-    getSpellImageUrl,
-    getRandomChampionSpell,
-    getRandomChampion
+    getRandomChampion,
+    getLangCodes
 };
