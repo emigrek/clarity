@@ -1,6 +1,9 @@
 import Image from 'next/image';
-import { CollectionIcon } from '@heroicons/react/solid'
-import { AcademicCapIcon } from '@heroicons/react/solid'
+import { CollectionIcon as CO } from '@heroicons/react/outline'
+import { SparklesIcon as SO } from '@heroicons/react/outline'
+
+import { CollectionIcon as CS } from '@heroicons/react/solid'
+import { SparklesIcon as SS } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 
 
@@ -16,14 +19,16 @@ function Header() {
             <div className='flex justify-between items-start flex-grow'>
                 <div className='flex flex-col space-y-1'>
                     <NavItem to="/" active={ router.asPath == "/" } Content={() => (
-                        <div className='flex items-center'>
-                            <AcademicCapIcon className='h-9'/>
-                            <span className='hidden md:block antialiased font-bold px-5'>Learn</span>
+                        <div className='flex items-center group'>
+                            <SS className='hidden group-hover:block h-8'/>
+                            <SO className='group-hover:hidden h-8'/>
+                            <span className='hidden md:block antialiased font-bold px-5'>Explore</span>
                         </div>
                     )}/>
                     <NavItem to="/collection" active={ router.asPath == "/collection" } Content={() => (
-                        <div className='flex items-center'>
-                            <CollectionIcon className='h-9'/>
+                        <div className='flex items-center group'>
+                            <CS className='hidden group-hover:block h-8'/>
+                            <CO className='group-hover:hidden h-8'/>
                             <span className='hidden md:block antialiased font-bold px-5'>Collection</span>
                         </div>
                     )}/>

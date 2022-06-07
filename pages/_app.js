@@ -8,11 +8,18 @@ import ddragon from '../modules/ddragon';
 function MyApp({ Component, pageProps }) {
   const [bgColor] = useGlobalState("bgColor");
   const [locales] = useGlobalState("locales");
+  const [version] = useGlobalState("version");
+  const [locale] = useGlobalState("locale");
 
   useEffect(() => {
     ddragon.getVersion();
     ddragon.getLocales();
   }, []);
+
+  useEffect(() => {
+    if(!version) return;
+    ddragon.getChampions(version, locale);
+  }, [version, locale]);
 
   useEffect(() => {
     if(!locales) return;

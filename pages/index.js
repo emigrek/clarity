@@ -10,8 +10,6 @@ import Statistics from '../components/Statistics';
 
 
 function App() {
-    const [version] = useGlobalState("version");
-    const [locale] = useGlobalState("locale");
     const [spell] = useGlobalState("spell");
     const [champions] = useGlobalState("champions");
     const [input] = useGlobalState("input");
@@ -19,11 +17,6 @@ function App() {
     const [spellDetails] = useGlobalState("spellDetails");
 
     const [startTime, setStartTime] = useState(null);
-
-    useEffect(() => {
-        if(!version) return;
-        ddragon.getChampions(version, locale);
-    }, [version, locale]);
 
     const showRandomSpell = () => {
       setGlobalState("spellLoader", true);
@@ -34,7 +27,6 @@ function App() {
       const spells = ddragon.getChampionSpells(champ, champions);
       const spell = _.shuffle(spells).pop();
       setGlobalState("spell", spell);
-      console.log(spell);
     }
   
     useEffect(() => {
