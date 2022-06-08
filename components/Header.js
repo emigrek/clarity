@@ -40,15 +40,20 @@ function Header() {
                 )}/>
             </div>
             <div className='flex flex-col align-middle items-center my-2 select-none'>
-                <div className='text-xs'>
+                <div className='text-xs font-mono uppercase'>
                     Progress
                 </div>
-                <div className='font-bold text-2xl'>
+                <div className='font-bold text-xl'>
                     {progress}%
                 </div>
-                <div onClick={handleProgressClear} className='text-xs opacity-40 hover:opacity-100 hover:bg-red-700 transition-colors duration-500 cursor-pointer p-1 bg-white text-black'>
-                    tap to clear
-                </div>
+                {
+                    progress > 0 && (
+                        <div onClick={handleProgressClear} className='rounded-md mt-1 text-xs opacity-40 hover:opacity-100 hover:bg-red-700 transition-colors duration-500 cursor-pointer p-1 bg-white text-black'>
+                            tap to clear
+                        </div>
+                    )
+                }
+                
             </div>
             <div className='flex space-x-6 items-center opacity-80'>
                 <div>
