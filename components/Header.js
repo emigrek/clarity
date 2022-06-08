@@ -34,11 +34,11 @@ function Header() {
                     </div>
                 )}/>
             </div>
-            <div className='flex items-center my-5 space-x-4 select-none'>
+            <div className='flex flex-col align-middle items-center my-5 select-none'>
                 <div className='text-sm'>
-                    Progress:
+                    Progress
                 </div>
-                <div className='font-bold'>
+                <div className='font-bold text-lg p-1'>
                     {progress}%
                 </div>
             </div>
