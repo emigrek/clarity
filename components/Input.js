@@ -5,8 +5,6 @@ import ddragon from '../modules/ddragon';
 
 function Input() {
     const [input] = useGlobalState("input");
-    const [version] = useGlobalState("version");
-    const [locale] = useGlobalState("locale");
     const [champions] = useGlobalState("champions");
     const [spell] = useGlobalState("spell");
     const [spellDetailsTimeout] = useGlobalState("spellDetailsTimeout");
@@ -44,7 +42,7 @@ function Input() {
                 <div className='py-5 w-10/12 flex justify-center flex-col border-t border-white border-opacity-10'>
                     <input
                         ref={inputRef}
-                        placeholder="Guess (enter to skip)" 
+                        placeholder="Champion (enter to skip)" 
                         className='placeholder:opacity-40 bg-black bg-opacity-60 rounded-full outline-none p-4 text-center text-gray-200' 
                         value={input} 
                         onChange={handleInputChange}

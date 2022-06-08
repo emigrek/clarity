@@ -2,7 +2,7 @@ function ChampionLoader() {
   return (
     <div className='bg-zinc-800 rounded-lg absolute w-full h-full top-0 left-0 z-20 p-5 flex flex-col select-none space-y-4'>
         <div className='flex items-center justify-between px-5'>
-            <div className='text-lg font-medium w-28 h-6 rounded-md bg-black bg-opacity-50 animate-pulse'>
+            <div className='text-lg font-medium w-16 h-6 rounded-md bg-black bg-opacity-50 animate-pulse'>
             </div>
             <div className="relative w-14 h-14 bg-black bg-opacity-50 rounded-md shadow-lg animate-pulse">
             </div>

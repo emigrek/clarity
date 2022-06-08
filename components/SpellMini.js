@@ -5,8 +5,8 @@ function SpellMini({spell}) {
     const [version] = useGlobalState("version");
 
     return (
-        <div className='relative h-8 w-8 shadow-lg rounded-lg'>
-            <Image layout="fill" className='rounded-lg' src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
+        <div className="relative h-8 w-8 shadow-lg rounded-lg">
+            <Image className={`${spell.seen ? '' : 'grayscale'}`} layout="fill" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
         </div>
     )
 }

@@ -15,6 +15,8 @@ function App() {
     const [input] = useGlobalState("input");
     const [responseTimes] = useGlobalState("responseTimes");
     const [spellDetails] = useGlobalState("spellDetails");
+    
+    const [discovered] = useGlobalState("discovered");
 
     const [startTime, setStartTime] = useState(null);
 
@@ -43,6 +45,10 @@ function App() {
       if(!spell || spellDetails) return;
   
       if(input.toLowerCase().includes(spell.owner.name.toLowerCase())) {
+        var disc = [spell.image.full.slice(0, -4), ...discovered];
+        setGlobalState("discovered", disc);
+        localStorage.setItem("discovered", JSON.stringify(disc));
+
         setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
         setStartTime(null);
         setGlobalState("spellDetails",true);
@@ -54,6 +60,7 @@ function App() {
         );
       }
     }, [input]);
+
 
     return (
         <div className="flex flex-col align-middle justify-center">
