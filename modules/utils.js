@@ -36,7 +36,7 @@ const getSpells = (champions) => {
 const calculateProgress = (champions) => {
   const spells = getSpells(champions);
   const seen = spells.filter(spell => !spell.seen);
-  setGlobalState("progress", _.ceil((100 - (seen.length/spells.length)*100),2))
+  setGlobalState("progress", _.ceil((100 - (seen.length/spells.length)*100),0))
 }
 
 export default {

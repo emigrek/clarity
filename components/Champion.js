@@ -35,7 +35,9 @@ function Champion({champion}) {
                 <div className='flex flex-row items-center shadow-black shadow-2xl justify-center space-x-1 rounded-xl px-2 py-6 bg-black bg-opacity-50'>
                     <SpellMini key={champion.passive.id} spell={champion.passive}/>
                     {
-                        champion.spells.map((spell) => ( <SpellMini key={spell.id} spell={spell}/> ))
+                        champion.spells.map((spell) =>(
+                            <SpellMini key={spell.id} spell={spell}/>
+                        ))
                     }
                 </div>
             </div>
