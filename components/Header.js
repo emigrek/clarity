@@ -10,11 +10,16 @@ import { useRouter } from 'next/router'
 import HeaderIcon from './HeaderIcon';
 import LocaleSelect from './LocaleSelect';
 import NavItem from './NavItem';
-import { useGlobalState } from '../state';
+import { setGlobalState, useGlobalState } from '../state';
 
 function Header() {
     const [progress] = useGlobalState("progress");
     const router = useRouter();
+
+    const handleProgressClear = () => {
+        setGlobalState("discovered", []);
+        localStorage.setItem("discovered", JSON.stringify([]));
+    }
 
     return (
         <div className='z-40 absolute top-1 w-screen flex justify-between align-middle items-start'>
@@ -34,12 +39,15 @@ function Header() {
                     </div>
                 )}/>
             </div>
-            <div className='flex flex-col align-middle items-center my-5 select-none'>
-                <div className='text-sm'>
+            <div className='flex flex-col align-middle items-center my-2 select-none'>
+                <div className='text-xs'>
                     Progress
                 </div>
-                <div className='font-bold text-lg p-1'>
+                <div className='font-bold text-2xl'>
                     {progress}%
+                </div>
+                <div onClick={handleProgressClear} className='text-xs opacity-40 hover:opacity-100 hover:bg-red-700 transition-colors duration-500 cursor-pointer p-1 bg-white text-black'>
+                    tap to clear
                 </div>
             </div>
             <div className='flex space-x-6 items-center opacity-80'>
