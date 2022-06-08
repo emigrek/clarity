@@ -19,7 +19,7 @@ function Collection() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center scroll-auto will-change-scroll overflow-y-scroll mt-24 md:mt-36 xl:mt-24 w-8/12 xl:w-7/12">
+        <div className="flex flex-col items-center scroll-auto will-change-scroll overflow-y-scroll mt-24">
             <div className='sticky top-0 w-full left-0 right-0 z-40'>
                 <div className='bg-black bg-opacity-80 backdrop-blur-lg shadow-2xl rounded-lg py-5 px-8'>
                     <div className='flex items-center justify-center'>
@@ -32,7 +32,7 @@ function Collection() {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6">
                 {
                     search ? search.map(champion => (
                         <LazyLoad overflow key={champion.id} height={192}>

@@ -23,8 +23,8 @@ function Champion({champion}) {
     return (
         <div className='relative'>
             { loading && <ChampionLoader/> }
-            <div style={{ backgroundColor: accent }} className='p-5 shadow-lg rounded-lg flex flex-col select-none space-y-4'>
-                <div className='flex items-center justify-between px-4'>
+            <div style={{ backgroundColor: accent }} className='px-8 py-6 shadow-lg rounded-lg flex flex-col select-none space-y-4'>
+                <div className='flex items-center justify-between px-4 space-x-6'>
                     <div className='font-medium'>
                         {champion.name}
                     </div>
