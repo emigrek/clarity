@@ -64,7 +64,7 @@ function App() {
 
 
     return (
-        <div className="flex flex-col align-middle justify-center">
+        <div className="flex flex-col align-middle justify-center z-50">
           <div className='shadow-lg rounded-3xl backdrop-blur-md'>
             <Spell showRandomSpell={showRandomSpell}/>
             <Input/>

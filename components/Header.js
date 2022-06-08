@@ -17,7 +17,7 @@ function Header() {
     const router = useRouter();
 
     return (
-        <div className='z-50 absolute top-1 w-screen flex justify-between align-middle items-start'>
+        <div className='z-40 absolute top-1 w-screen flex justify-between align-middle items-start'>
             <div className='flex flex-col space-y-1'>
                 <NavItem to="/" active={ router.asPath == "/" } Content={() => (
                     <div className='flex items-center group'>
