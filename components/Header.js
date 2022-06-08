@@ -43,7 +43,7 @@ function Header() {
                 <div className='text-xs font-mono uppercase'>
                     Progress
                 </div>
-                <div className='font-bold text-4xl'>
+                <div className='font-bold text-3xl'>
                     {progress}%
                 </div>
                 {
