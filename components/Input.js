@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
-
-import ddragon from '../modules/ddragon';
+import utils from '../modules/utils';
 
 function Input() {
     const [input] = useGlobalState("input");
@@ -25,9 +24,9 @@ function Input() {
         setGlobalState("spellDetails", false);
         setGlobalState("input", '');
         
-        const champ = ddragon.getRandomChampion(champions);
-        const spells = ddragon.getChampionSpells(champ, champions);
-        const spell = _.shuffle(spells).pop();
+        const spells = utils.getSpells(champions);
+        const notseen = spells.filter(spell => !spell.seen);
+        const spell = _.shuffle(notseen).pop();
         setGlobalState("spell", spell);
     }
 
