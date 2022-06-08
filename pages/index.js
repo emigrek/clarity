@@ -7,6 +7,7 @@ import ddragon from '../modules/ddragon';
 import Spell from '../components/Spell';
 import Input from '../components/Input';
 import Statistics from '../components/Statistics';
+import utils from '../modules/utils';
 
 
 function App() {
@@ -25,9 +26,9 @@ function App() {
       setGlobalState("spellDetails", false);
       setGlobalState("input", '');
       
-      const champ = ddragon.getRandomChampion(champions);
-      const spells = ddragon.getChampionSpells(champ, champions);
-      const spell = _.shuffle(spells).pop();
+      const spells = utils.getSpells(champions);
+      const notseen = spells.filter(spell => !spell.seen);
+      const spell = _.shuffle(notseen).pop();
       setGlobalState("spell", spell);
     }
   
@@ -48,7 +49,7 @@ function App() {
         var disc = [spell.image.full.slice(0, -4), ...discovered];
         setGlobalState("discovered", disc);
         localStorage.setItem("discovered", JSON.stringify(disc));
-
+        utils.calculateProgress(champions);
         setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
         setStartTime(null);
         setGlobalState("spellDetails",true);
@@ -64,11 +65,11 @@ function App() {
 
     return (
         <div className="flex flex-col align-middle justify-center">
-            <div className='shadow-lg rounded-3xl backdrop-blur-md'>
-              <Spell showRandomSpell={showRandomSpell}/>
-              <Input/>
-            </div>
-            <Statistics/>
+          <div className='shadow-lg rounded-3xl backdrop-blur-md'>
+            <Spell showRandomSpell={showRandomSpell}/>
+            <Input/>
+          </div>
+          <Statistics/>
         </div>
     )
 }

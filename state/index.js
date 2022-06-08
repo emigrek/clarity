@@ -8,6 +8,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     spellDetails: false,
     spellDetailsTimeout: null,
     discovered: [],
+    progress: 0,
     locale: {
         code: "en_US",
         language: "English (United States)"

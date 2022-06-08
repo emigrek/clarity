@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import { setGlobalState } from "../state/";
+
 const syncSeen = (champions) => {
     var seen = JSON.parse(localStorage.getItem("discovered")) || [];
 
@@ -14,6 +17,30 @@ const syncSeen = (champions) => {
     })
 }
 
+const getSpells = (champions) => {
+    var spells = [];
+
+    champions.forEach(champion => {
+        champion.passive.owner = champion;
+        spells.push(champion.passive);
+
+        champion.spells.forEach(spell => { 
+            spell.owner = champion;
+            spells.push(spell);
+        });
+    });
+
+    return spells;
+}
+
+const calculateProgress = (champions) => {
+  const spells = getSpells(champions);
+  const seen = spells.filter(spell => !spell.seen);
+  setGlobalState("progress", _.ceil((100 - (seen.length/spells.length)*100),2))
+}
+
 export default {
-    syncSeen
+    syncSeen,
+    getSpells,
+    calculateProgress
 }

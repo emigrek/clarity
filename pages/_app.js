@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if(!champions) return;
     utils.syncSeen(champions);
+    utils.calculateProgress(champions);
   }, [champions, discovered])
 
   useEffect(() => {

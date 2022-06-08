@@ -10,8 +10,10 @@ import { useRouter } from 'next/router'
 import HeaderIcon from './HeaderIcon';
 import LocaleSelect from './LocaleSelect';
 import NavItem from './NavItem';
+import { useGlobalState } from '../state';
 
 function Header() {
+    const [progress] = useGlobalState("progress");
     const router = useRouter();
 
     return (
@@ -31,6 +33,14 @@ function Header() {
                         <span className='hidden md:block antialiased font-bold px-5'>Collection</span>
                     </div>
                 )}/>
+            </div>
+            <div className='flex items-center my-5 space-x-4 select-none'>
+                <div className='text-sm'>
+                    Progress:
+                </div>
+                <div className='font-bold'>
+                    {progress}%
+                </div>
             </div>
             <div className='flex space-x-6 items-center opacity-80'>
                 <div>
