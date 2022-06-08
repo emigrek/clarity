@@ -23,13 +23,13 @@ function Champion({champion}) {
     return (
         <div className='relative'>
             { loading && <ChampionLoader/> }
-            <div style={{ backgroundColor: accent }} className='px-8 py-6 shadow-lg rounded-lg flex flex-col select-none space-y-4'>
+            <div style={{ backgroundColor: accent }} className='px-8 py-6 shadow-lg rounded-lg flex flex-col select-none space-y-4 transition duration-100 ease-in-out'>
                 <div className='flex items-center justify-between px-4 space-x-6'>
                     <div className='font-medium'>
                         {champion.name}
                     </div>
                     <div className="relative w-14 h-14 rounded-md shadow-lg shadow-black">
-                        <Image priority layout="fill" className='rounded-md' src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${champion.image.group}/${champion.image.full}`}/>
+                        <Image layout="fill" className='rounded-md' src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${champion.image.group}/${champion.image.full}`}/>
                     </div>
                 </div>
                 <div className='flex flex-row items-center shadow-black shadow-2xl justify-center space-x-1 rounded-xl px-2 py-6 bg-black bg-opacity-50'>
@@ -39,8 +39,7 @@ function Champion({champion}) {
                     }
                 </div>
             </div>
-        </div>
-        
+        </div>    
     )
 }
 

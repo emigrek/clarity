@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { useGlobalState, setGlobalState } from '../state'
 import { useEffect } from 'react'; 
 import ddragon from '../modules/ddragon';
+import utils from '../modules/utils';
 
 function MyApp({ Component, pageProps }) {
   const [bgColor] = useGlobalState("bgColor");
@@ -31,19 +32,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if(!champions) return;
-    var seen = JSON.parse(localStorage.getItem("discovered")) || [];
-
-    champions.forEach(champion => {
-      if(seen.includes(champion.passive.image.full.slice(0, -4)))
-        champion.passive.seen = true;
-      else champion.passive.seen = false;
-      
-      champion.spells.forEach(spell => {
-        if(seen.includes(spell.image.full.slice(0, -4)))
-          spell.seen = true;
-        else spell.seen = false;
-      });
-    })
+    utils.syncSeen(champions);
   }, [champions, discovered])
 
   useEffect(() => {
