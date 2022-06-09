@@ -16,6 +16,8 @@ function ChampionLoader() {
             </div>
             <div className='relative h-8 w-8 shadow-lg rounded-lg bg-black animate-pulse'>
             </div>
+            <div className='relative h-8 w-8 shadow-lg rounded-lg bg-black animate-pulse'>
+            </div>
         </div>
     </div>
   )

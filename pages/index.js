@@ -15,10 +15,14 @@ function App() {
     const [input] = useGlobalState("input");
     const [responseTimes] = useGlobalState("responseTimes");
     const [spellDetails] = useGlobalState("spellDetails");
-    
+    const [recent] = useGlobalState("recent");
     const [discovered] = useGlobalState("discovered");
 
     const [startTime, setStartTime] = useState(null);
+
+    useEffect(() => {
+      setGlobalState('recent', []);
+    }, []);
   
     useEffect(() => {
       setStartTime(moment());
@@ -38,10 +42,13 @@ function App() {
       if(!spell || spellDetails) return;
   
       if(input.toLowerCase().includes(spell.owner.name.toLowerCase())) {
-        var disc = [spell.image.full.slice(0, -4), ...discovered];
+        var newDiscovered = [spell.image.full.slice(0, -4), ...discovered];
+        var newRecent = [spell.image.full.slice(0, -4), ...recent];
 
-        setGlobalState("discovered", disc);
-        localStorage.setItem("discovered", JSON.stringify(disc));
+        setGlobalState("recent", newRecent);
+        setGlobalState("discovered", newDiscovered);
+
+        app.saveProgress(newDiscovered);
         app.calculateProgress(champions);
 
         setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);

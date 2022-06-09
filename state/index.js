@@ -8,13 +8,13 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     spellDetails: false,
     spellDetailsTimeout: null,
     discovered: [],
+    recent: [],
     progress: 0,
     locale: {
         code: "en_US",
         language: "English (United States)"
     },
     locales: null,
-    randomChampion: null,
     champions: null,
     version: null,
     bgColor: '#171717'

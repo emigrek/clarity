@@ -17,17 +17,21 @@ const syncSeen = (champions) => {
   })
 }
 
+const saveProgress = (progress) => {
+  localStorage.setItem("discovered", JSON.stringify(progress));
+}
+
 const getSpells = (champions) => {
   var spells = [];
 
   champions.forEach(champion => {
-      champion.passive.owner = champion;
-      spells.push(champion.passive);
+    champion.passive.owner = champion;
+    spells.push(champion.passive);
 
-      champion.spells.forEach(spell => { 
-        spell.owner = champion;
-        spells.push(spell);
-      });
+    champion.spells.forEach(spell => { 
+      spell.owner = champion;
+      spells.push(spell);
+    });
   });
 
   return spells;
@@ -54,5 +58,6 @@ export default {
   syncSeen,
   getSpells,
   calculateProgress,
-  getUnseenSpell
+  getUnseenSpell,
+  saveProgress
 }
