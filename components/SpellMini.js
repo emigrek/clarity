@@ -21,12 +21,12 @@ function SpellMini({spell}) {
             ${isRecent(spell) ? 'relative h-8 w-8 shadow-lg rounded-md border-solid border-2 border-amber-400 animate-pulse' : 'relative h-8 w-8 shadow-lg rounded-lg'}
         `}>
             { loading && (
-                <div className='absolute z-40 top-0 left-0 h-8 w-8 shadow-lg rounded-md bg-black'></div>
+                <div className='absolute z-40 top-0 left-0 h-8 w-8 shadow-lg rounded-lg bg-black bg-opacity-50'></div>
             ) }
             <Image onLoad={() => {
                 setLoading(false);
             }}  className={`
-                ${isDiscovered(spell) ? 'rounded-md' : 'grayscale rounded-md opacity-50'}
+                ${isDiscovered(spell) ? 'rounded-md' : 'grayscale rounded-md opacity-30'}
             `} layout="fill" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
         </div>
     )
