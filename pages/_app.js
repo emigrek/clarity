@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { useGlobalState, setGlobalState } from '../state'
 import { useEffect } from 'react'; 
 import ddragon from '../modules/ddragon';
-import utils from '../modules/utils';
+import app from '../modules/app';
 
 function MyApp({ Component, pageProps }) {
   const [bgColor] = useGlobalState("bgColor");
@@ -32,8 +32,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if(!champions) return;
-    utils.syncSeen(champions);
-    utils.calculateProgress(champions);
+    app.syncSeen(champions);
+    app.calculateProgress(champions);
   }, [champions, discovered])
 
   useEffect(() => {

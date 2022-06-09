@@ -3,11 +3,10 @@ import { setGlobalState, useGlobalState } from '../state'
 import moment from 'moment';
 import _ from 'lodash';
 
-import ddragon from '../modules/ddragon';
 import Spell from '../components/Spell';
 import Input from '../components/Input';
 import Statistics from '../components/Statistics';
-import utils from '../modules/utils';
+import app from '../modules/app';
 
 
 function App() {
@@ -26,10 +25,7 @@ function App() {
       setGlobalState("spellDetails", false);
       setGlobalState("input", '');
       
-      const spells = utils.getSpells(champions);
-      const notseen = spells.filter(spell => !spell.seen);
-      const spell = _.shuffle(notseen).pop();
-      setGlobalState("spell", spell);
+      app.getUnseenSpell(champions);
     }
   
     useEffect(() => {
@@ -39,7 +35,7 @@ function App() {
     useEffect(() => {
       if(!champions) return;
   
-      showRandomSpell();
+      app.getUnseenSpell(champions);
     }, [champions]);
   
     useEffect(() => {
@@ -49,14 +45,14 @@ function App() {
         var disc = [spell.image.full.slice(0, -4), ...discovered];
         setGlobalState("discovered", disc);
         localStorage.setItem("discovered", JSON.stringify(disc));
-        utils.calculateProgress(champions);
+        app.calculateProgress(champions);
         setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
         setStartTime(null);
         setGlobalState("spellDetails",true);
   
         setGlobalState("spellDetailsTimeout",
           setTimeout(() => {
-            showRandomSpell();
+            app.getUnseenSpell(champions);
           }, 5*1000)
         );
       }

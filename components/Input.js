@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { setGlobalState, useGlobalState } from '../state'
-import utils from '../modules/utils';
+import app from '../modules/app';
 
 function Input() {
     const [input] = useGlobalState("input");
@@ -24,10 +24,7 @@ function Input() {
         setGlobalState("spellDetails", false);
         setGlobalState("input", '');
         
-        const spells = utils.getSpells(champions);
-        const notseen = spells.filter(spell => !spell.seen);
-        const spell = _.shuffle(notseen).pop();
-        setGlobalState("spell", spell);
+        app.getUnseenSpell(champions);
     }
 
     useEffect(() => {
