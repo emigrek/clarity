@@ -25,8 +25,8 @@ const getSpells = (champions) => {
       spells.push(champion.passive);
 
       champion.spells.forEach(spell => { 
-          spell.owner = champion;
-          spells.push(spell);
+        spell.owner = champion;
+        spells.push(spell);
       });
   });
 
@@ -36,7 +36,11 @@ const getSpells = (champions) => {
 const getUnseenSpell = (champions) => {
   const spells = getSpells(champions);
   const notseen = spells.filter(spell => !spell.seen);
-  const spell = _.shuffle(notseen).pop();
+  var spell;
+
+  if(notseen.length) spell = _.shuffle(notseen).pop();
+  else spell = _.shuffle(spells).pop();
+
   setGlobalState("spell", spell);
 }
 

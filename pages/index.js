@@ -19,14 +19,6 @@ function App() {
     const [discovered] = useGlobalState("discovered");
 
     const [startTime, setStartTime] = useState(null);
-
-    const showRandomSpell = () => {
-      setGlobalState("spellLoader", true);
-      setGlobalState("spellDetails", false);
-      setGlobalState("input", '');
-      
-      app.getUnseenSpell(champions);
-    }
   
     useEffect(() => {
       setStartTime(moment());
@@ -35,6 +27,10 @@ function App() {
     useEffect(() => {
       if(!champions) return;
   
+      setGlobalState("spellLoader", true);
+      setGlobalState("spellDetails", false);
+      setGlobalState("input", '');
+      
       app.getUnseenSpell(champions);
     }, [champions]);
   
@@ -43,15 +39,21 @@ function App() {
   
       if(input.toLowerCase().includes(spell.owner.name.toLowerCase())) {
         var disc = [spell.image.full.slice(0, -4), ...discovered];
+
         setGlobalState("discovered", disc);
         localStorage.setItem("discovered", JSON.stringify(disc));
         app.calculateProgress(champions);
+
         setGlobalState("responseTimes", [ moment().diff(startTime, 'milliseconds'), ...responseTimes]);
         setStartTime(null);
         setGlobalState("spellDetails",true);
   
         setGlobalState("spellDetailsTimeout",
           setTimeout(() => {
+            setGlobalState("spellLoader", true);
+            setGlobalState("spellDetails", false);
+            setGlobalState("input", '');
+            
             app.getUnseenSpell(champions);
           }, 5*1000)
         );
@@ -62,7 +64,7 @@ function App() {
     return (
         <div className="flex flex-col align-middle justify-center z-50">
           <div className='shadow-lg rounded-3xl backdrop-blur-md'>
-            <Spell showRandomSpell={showRandomSpell}/>
+            <Spell/>
             <Input/>
           </div>
           <Statistics/>
