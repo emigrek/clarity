@@ -35,7 +35,7 @@ function Header() {
                         <span className='hidden md:block antialiased font-bold px-5'>Collection</span>
                         {
                             recent.length > 0 && ( 
-                                <span className='mb-3 md:mb-0 animate-pulse bg-amber-400 text-black px-1 text-sm font-bold rounded-full shadow-lg md:-ml-2'>{recent.length}</span> 
+                                <span className='mb-3 md:mb-0 animate-pulse bg-amber-400 shadow-amber-400/40 text-black px-1 text-sm font-bold rounded-full shadow-lg md:-ml-2'>{recent.length}</span> 
                             )
                         }
                     </div>
