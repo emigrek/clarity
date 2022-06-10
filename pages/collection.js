@@ -17,7 +17,9 @@ function Collection() {
         setShowCollection(false);
         if(searchQ != '') {
             const match = champions.filter(champion => 
-                champion.name.toLowerCase().indexOf(searchQ.toLowerCase()) > -1    
+                champion.name.toLowerCase().indexOf(searchQ.toLowerCase()) > -1 ||
+                champion.passive.name.toLowerCase().indexOf(searchQ.toLowerCase()) > -1 ||
+                champion.spells.filter(spell => spell.name.toLowerCase().indexOf(searchQ.toLowerCase()) > -1).length
             );
     
             setCollection(match);
@@ -49,7 +51,7 @@ function Collection() {
             {
                 (!showCollection || !champions) && (
                     <div className='flex flex-col items-center justify-center text-center h-full space-y-6 opacity-50'>
-                        <div className='h-14 w-14 animate-ping duration-1000'>
+                        <div className='h-6 w-6 animate-ping duration-1000'>
                             <LightningBoltIcon className='relative'/>
                         </div>
                     </div>
