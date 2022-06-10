@@ -30,7 +30,7 @@ function Collection() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 place-content-center gap-4 p-6">
                         {
                             champions.map((champion) => (
-                                <Champion champion={champion}/>
+                                <Champion key={champion.id} champion={champion}/>
                             ))
                         }
                     </div>
