@@ -32,6 +32,11 @@ function Collection() {
     }, [searchQ])
 
     useEffect(() => {
+        if(!champions) return;
+        setCollection(champions);
+    }, [champions]);
+
+    useEffect(() => {
         setGlobalState("bgColor", '#171717');
 
         const timeout = setTimeout(() => setShowCollection(true), 1000);
@@ -69,7 +74,7 @@ function Collection() {
                 )
             }
             {
-                (showCollection && !collection.length) && (
+                (showCollection && (!collection.length)) && (
                     <div className='flex flex-col items-center justify-center space-y-12 text-center opacity-50'>
                         No results match your criteria. 😥
                     </div>
