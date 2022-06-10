@@ -26,7 +26,7 @@ function Champion({champion}) {
                 transition={{ ease: "easeIn", duration: 0.2 }}
                 className='relative'
             >
-                    <div style={{ backgroundColor: accent }} className='px-8 py-6 shadow-lg rounded-lg flex flex-col select-none space-y-4 transition-colors duration-500'>
+                    <div style={{ backgroundColor: accent }} className='px-8 py-6 shadow-lg rounded-lg flex flex-col select-none space-y-4 transition-colors duration-1000'>
                         <div className='flex items-center justify-between px-4 space-x-6'>
                             <div className='font-medium'>
                                 {champion.name}
