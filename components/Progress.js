@@ -8,6 +8,7 @@ function Progress() {
 
     const handleProgressClear = () => {
         setGlobalState("discovered", []);
+        setGlobalState("recent", []);
         localStorage.setItem("discovered", JSON.stringify([]));
         app.syncSeen(champions);
     }

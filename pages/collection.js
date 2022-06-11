@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { setGlobalState, useGlobalState } from '../state'
-import { LightningBoltIcon, SearchIcon } from '@heroicons/react/solid'
-import dynamic from 'next/dynamic';
+import { SearchIcon } from '@heroicons/react/solid'
 
-const Champion = dynamic(() => import('../components/Champion'), {
-    ssr: false
-});
+import CollectionLoader from '../components/CollectionLoader';
+import ChampionGrid from '../components/ChampionGrid';
 
 function Collection() {
     const [champions] = useGlobalState("champions");
@@ -46,30 +44,20 @@ function Collection() {
     return (
         <div className='flex flex-col items-center mt-20 w-full'>
             <div className='flex items-center my-4 shadow-lg z-50'>
-                <div className='group flex items-center flex-shrink bg-black rounded-lg px-5 py-2'>
-                    <input onChange={(e) => setSearchQ(e.target.value)} placeholder="Search" className='bg-transparent outline-none relative py-2'/>
-                    <SearchIcon className='h-5 w-5'/>
+                <div className='flex items-center flex-shrink bg-black rounded-xl px-4 py-1'>
+                    <input onChange={(e) => setSearchQ(e.target.value)} placeholder="Search" className='bg-transparent text-white outline-none relative py-2'/>
+                    <SearchIcon className='opacity-50 h-5 w-5'/>
                 </div>
             </div>
             <div className="flex flex-col items-center w-full h-full overflow-y-scroll">
                 {
                     (!showCollection || !champions) && (
-                        <div className='flex flex-col items-center justify-center text-center h-full space-y-6 opacity-50'>
-                            <div className='h-6 w-6 animate-ping duration-1000'>
-                                <LightningBoltIcon className='relative'/>
-                            </div>
-                        </div>
+                        <CollectionLoader/>
                     )
                 }
                 {
                     (showCollection && collection) && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-2">
-                            {
-                                collection.map((champion) => (
-                                    <Champion key={champion.id} champion={champion}/>
-                                ))
-                            }
-                        </div>
+                        <ChampionGrid collection={collection}/>
                     )
                 }
                 {
