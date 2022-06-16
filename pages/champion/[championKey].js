@@ -14,7 +14,7 @@ const ChampionPage = () => {
   const [champions] = useGlobalState('champions');
   const [spellVideo] = useGlobalState('spellVideo');
   const [version] = useGlobalState('version');
-  const { championId } = router.query;
+  const { championKey } = router.query;
   const [champion, setChampion] = useState(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ChampionPage = () => {
 
   useEffect(() => {
     if(!champions) return;
-    const found = champions.find(x => x.id == championId);
+    const found = champions.find(x => x.key == championKey);
     
     if(!found) {
         router.push('/collection');

@@ -10,7 +10,7 @@ function Champion({champion}) {
     }
     
     return (
-        <Link href={`/champion/${champion.id}`}>
+        <Link href={`/champion/${champion.key}`}>
             <div className='relative'>
                 {
                     (isRecent(champion.passive) || champion.spells.map(x => isRecent(x)).filter(y => y > 0).length) > 0 && ( 
