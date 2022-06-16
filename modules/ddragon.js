@@ -37,10 +37,13 @@ const getChampions = async (version, locale) => {
 
 const getChampionSpells = (champion, data) => {
     var champion = data.find(x => x.id == champion.id);
+
     champion.passive.owner = champion;
-    champion.spells.forEach(spell => {
+
+    champion.spells.forEach((spell) => {
         spell.owner = champion;
     });
+
     return [champion.passive, ...champion.spells];
 }
 

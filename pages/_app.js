@@ -51,8 +51,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/ico.ico" />
       </Head>
       <Header/>
-      <div className='flex justify-center w-screen h-screen'>
-      <Component {...pageProps} />
+      <div className='flex justify-center w-screen h-screen overflow-y-auto overflow-x-hidden'>
+        <Component {...pageProps} />
       </div>
     </div>
   )

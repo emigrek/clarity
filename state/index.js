@@ -16,6 +16,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     },
     locales: null,
     champions: null,
+    spellVideo: null,
     version: null,
     bgColor: '#171717'
 });

@@ -6,9 +6,9 @@ function NavItem({ to, Content, active}) {
         <div
             onClick={() => router.push(to) }
             className={ active ? 
-                "flex w-14 md:w-64 justify-start items-center space-x-2 py-4 p-3 md:px-14 bg-opacity-100 transition duration-150 cursor-pointer backdrop-blur-md bg-black hover:bg-white hover:text-black rounded-r-2xl" 
+                "flex w-14 md:w-56 justify-center items-center py-3 bg-opacity-100 transition duration-150 cursor-pointer backdrop-blur-md bg-black hover:bg-white hover:text-black rounded-lg" 
                 : 
-                "flex w-14 md:w-64 justify-start items-center space-x-2 py-4 p-3 md:px-14 bg-opacity-30 transition duration-150 cursor-pointer backdrop-blur-md bg-black hover:bg-white hover:text-black rounded-r-2xl"
+                "flex w-14 md:w-56 justify-center items-center py-3 bg-opacity-0 transition duration-150 cursor-pointer backdrop-blur-md bg-black hover:bg-white hover:text-black rounded-lg"
             }
         >
             <Content/>
