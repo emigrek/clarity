@@ -38,7 +38,7 @@ function SpellMini({spell}) {
                     ${isRecent() ? 'rounded-lg cursor-pointer z-20 relative h-16 w-16 ring-offset-1 ring-offset-black ring-2 ring-amber-500 shadow-lg shadow-amber-500/40' : 'cursor-pointer relative h-16 w-16 shadow-lg rounded-lg'}
                 `}
             >
-                <Image onLoad={() => {
+                <Image alt="spell" onLoad={() => {
                     setLoading(false);
                 }}  className={`
                     ${isDiscovered() ? 'rounded-lg bg-black bg-opacity-50' : 'bg-black bg-opacity-50 grayscale rounded-lg opacity-20'}

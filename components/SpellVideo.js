@@ -18,7 +18,10 @@ function SpellVideo({ champion }) {
     }
 
     useEffect(() => {
-        if(!spellVideo) return setLetter('p');
+        if(!spellVideo) {
+            setLetter('p');
+            return;
+        }
         videoEl.current.pause();
         setLetter(spellLetter());
         videoEl.current.load();

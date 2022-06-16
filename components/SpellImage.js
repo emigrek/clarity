@@ -9,6 +9,7 @@ function SpellImage() {
     const [version] = useGlobalState("version");
 
     useEffect(() => {
+        if(!version) return;
         average(`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`, { format: 'hex' }).then(color => {
             var color = chroma(color);
 
