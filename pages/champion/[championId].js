@@ -9,7 +9,7 @@ import chroma from "chroma-js"
 import SpellMini from '../../components/SpellMini';
 import SpellVideo from '../../components/SpellVideo';
 
-const champion = () => {
+const ChampionPage = () => {
   const router = useRouter()
   const [champions] = useGlobalState('champions');
   const [spellVideo] = useGlobalState('spellVideo');
@@ -88,4 +88,4 @@ const champion = () => {
     )
 }
 
-export default champion
+export default ChampionPage
