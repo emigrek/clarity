@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useGlobalState, setGlobalState } from '../state'
 
+import Image from 'next/image';
 
 function SpellDetails({visible, showRandomSpell}) {
     const [spell] = useGlobalState("spell");
+    const [version] = useGlobalState("version");
     const [spellDetailsTimeout] = useGlobalState("spellDetailsTimeout");
 
     const spellLetter = (spell) => {
@@ -33,8 +35,16 @@ function SpellDetails({visible, showRandomSpell}) {
                     exit={{ opacity: 0 }}
                 >
                     <div className='flex flex-col justify-evenly items-center p-5 space-y-2 w-72 h-72 lg:w-80 lg:h-80'>
-                        <div className="flex items-center font-medium text-lg">
-                            {spell.owner.name}
+                        <div className="flex space-x-4 items-center justify-between">
+                            <div className='text-xl'>
+                                {spell.owner.name}  
+                            </div>
+                            <div className="relative h-8 w-8 rounded-md">
+                                <Image className="rounded-md" layout="fill" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/${spell.image.group}/${spell.image.full}`}/>
+                            </div>
+                            <div className="font-bold bg-black px-2 rounded">
+                                {spellLetter(spell).toUpperCase()}
+                            </div>
                         </div>       
                         <div>
                             <video controls playsInline muted autoPlay loop className="aspect-video object-cover object-center rounded-md bg-black">
