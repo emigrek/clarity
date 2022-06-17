@@ -2,10 +2,22 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useGlobalState, setGlobalState } from '../state'
 import { stripHtml } from "string-strip-html";
 
+
 function SpellDetails({visible, showRandomSpell}) {
     const [spell] = useGlobalState("spell");
     const [version] = useGlobalState("version");
     const [spellDetailsTimeout] = useGlobalState("spellDetailsTimeout");
+
+    const spellLetter = (spell) => {
+        var letters = ['p', 'q', 'w', 'e', 'r'];
+        
+        switch(spell.image.group) {
+            case 'passive':
+                return 'p';
+            case 'spell':
+                return letters[spell.owner.spells.indexOf(spell)+1];
+        }
+    }
 
     return (
         <AnimatePresence>
@@ -27,9 +39,11 @@ function SpellDetails({visible, showRandomSpell}) {
                             {spell.owner.name}
                         </div>       
                         <div>
-                            <div className="bg-black bg-opacity-60 rounded-md p-2 text-slate-200 text-xs xl:text-sm shadow-lg">
-                                {stripHtml(spell.description).result}
-                            </div>
+                            <video controls playsInline muted autoPlay loop className="aspect-video object-cover object-center rounded-md bg-black">
+                                <source type="video/webm" 
+                                    src={`https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${String(spell.owner.key).padStart(4, '0')}/ability_${String(spell.owner.key).padStart(4, '0')}_${spellLetter(spell).toUpperCase()}1.webm`}
+                                />
+                            </video>
                         </div>
                         <div className='text-xs opacity-20'>
                             tap or press enter to skip
