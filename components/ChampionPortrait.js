@@ -7,7 +7,7 @@ function ChampionPortrait({champion}) {
     const [loading, setLoading] = useState(true);
 
     return (
-        <div className="group-hover:brightness-125 transition duration-150 relative w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-md shadow-md shadow-black">
+        <div className="shadow-md group-hover:brightness-125 transition duration-150 relative w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-md">
             {
                 loading && (
                     <div className="absolute top-0 left-0 z-50 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-black rounded-md shadow-lg"></div>

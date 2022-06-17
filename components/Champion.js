@@ -14,12 +14,12 @@ function Champion({champion}) {
             <div className='relative'>
                 {
                     (isRecent(champion.passive) || champion.spells.map(x => isRecent(x)).filter(y => y > 0).length) > 0 && ( 
-                        <div className='absolute right-2 top-0 z-50 w-3 h-3 rounded-full animate-pulse bg-amber-400 shadow-lg'/>
+                        <div className='absolute right-0 top-0 z-50 w-4 h-4 rounded-full animate-pulse bg-amber-400 shadow-lg shadow-amber-400'/>
                     )
                 }
-                <div className="flex group flex-col text-center items-center space-y-1 transition-all duration-500 cursor-pointer">
+                <div className="flex group hover:bg-white flex-col text-center items-center space-y-2 transition-all duration-500 cursor-pointer bg-black rounded-lg px-2 py-3 bg-opacity-40 shadow-lg">
                     <ChampionPortrait champion={champion}/>
-                    <span className="group-hover:opacity-100 transition-all duration-200 text-sm opacity-50">{champion.name}</span>
+                    <span className="font-medium group-hover:text-black group-hover:opacity-100 transition-all duration-200 text-sm opacity-80">{champion.name}</span>
                 </div>
             </div>
         </Link>

@@ -19,7 +19,7 @@ function Header() {
     const [recent] = useGlobalState('recent');
 
     return (
-        <div className='z-50 fixed top-0 w-screen bg-black bg-opacity-80 backdrop-blur-xl shadow-lg border-b-[1px] border-white border-opacity-20 py-3'>
+        <div className='z-50 fixed top-0 w-screen bg-transparent backdrop-blur-xl py-3'>
             <div className='container mx-auto px-4'>
                 <div className='flex justify-between items-center align-middle'>
                     <div className='flex flex-row space-x-3'>
@@ -44,7 +44,7 @@ function Header() {
                         )}/>
                     </div>
                     <Progress/>
-                    <div className='flex space-x-6 items-center opacity-80'>
+                    <div className='flex space-x-6 items-center opacity-100'>
                         <div>
                             <LocaleSelect/>
                         </div>
