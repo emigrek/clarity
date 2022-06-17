@@ -9,7 +9,7 @@ function SpellDetails({visible, showRandomSpell}) {
 
     return (
         <AnimatePresence>
-            { !visible &&
+            { visible &&
                 <motion.div 
                     onClick={() => {
                         clearTimeout(spellDetailsTimeout);
