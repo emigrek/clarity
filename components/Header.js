@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { CollectionIcon as CO } from '@heroicons/react/outline'
 import { SparklesIcon as SO } from '@heroicons/react/outline'
 import { AdjustmentsIcon as AO } from '@heroicons/react/outline'

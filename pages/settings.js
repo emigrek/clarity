@@ -1,4 +1,3 @@
-import HeaderIcon from '../components/HeaderIcon';
 import LocaleSelect from '../components/LocaleSelect';
 import Image from 'next/image';
 

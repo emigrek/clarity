@@ -1,11 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useGlobalState, setGlobalState } from '../state'
-import { stripHtml } from "string-strip-html";
 
 
 function SpellDetails({visible, showRandomSpell}) {
     const [spell] = useGlobalState("spell");
-    const [version] = useGlobalState("version");
     const [spellDetailsTimeout] = useGlobalState("spellDetailsTimeout");
 
     const spellLetter = (spell) => {
