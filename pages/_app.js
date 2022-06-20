@@ -21,8 +21,10 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    var storage = JSON.parse(localStorage.getItem("discovered")) || [];
-    setGlobalState("discovered", storage);
+    var storageDiscovered = JSON.parse(localStorage.getItem("discovered")) || [];
+    setGlobalState("discovered", storageDiscovered);
+
+    
   }, []);
 
   useEffect(() => {
@@ -38,9 +40,15 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if(!locales) return;
-    const browser = navigator.language.replace("-", "_");
-    const user = locales.find(x => x.code === browser);
-    setGlobalState("locale", user);
+    var storageLocale = JSON.parse(localStorage.getItem("locale"));
+
+    if(!storageLocale) { // sync with browser
+      const browser = navigator.language.replace("-", "_");
+      const user = locales.find(x => x.code === browser);
+      setGlobalState("locale", user);
+    } else {
+      setGlobalState("locale", storageLocale);
+    }
   }, [locales]);
 
   return (

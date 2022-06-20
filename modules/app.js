@@ -21,6 +21,10 @@ const saveProgress = (progress) => {
   localStorage.setItem("discovered", JSON.stringify(progress));
 }
 
+const saveLocale = (locale) => {
+  localStorage.setItem("locale", JSON.stringify(locale));
+}
+
 const getSpells = (champions) => {
   var spells = [];
 
@@ -59,5 +63,6 @@ export default {
   getSpells,
   calculateProgress,
   getUnseenSpell,
-  saveProgress
+  saveProgress,
+  saveLocale
 }

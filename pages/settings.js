@@ -9,7 +9,7 @@ function Settings() {
                 <LocaleSelect/>
             </div>
             <a href="https://github.com/emigrek/spellz" target="_blank" rel="noopener noreferrer">
-                <div className="relative w-24 h-24">
+                <div className="relative w-16 h-16">
                     <Image layout="fill" src={'/github.png'}/>
                 </div> 
             </a>

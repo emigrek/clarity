@@ -111,8 +111,8 @@ const ChampionPage = () => {
                 </div>
                 <div>
                     { spellVideo && (
-                        <div className='flex justify-center items-center px-2 py-4 bg-black bg-opacity-20 rounded-lg'>
-                            <div className='text-sm max-w-lg text-justify bg-black bg-opacity-80 p-2 rounded-lg opacity-80'>
+                        <div className='flex justify-center items-center py-4 bg-black bg-opacity-20 rounded-lg'>
+                            <div className='text-sm max-w-lg text-justify bg-black bg-opacity-80 p-2 rounded-md opacity-80'>
                                 {stripHtml(spellVideo.description).result}
                             </div>
                         </div>

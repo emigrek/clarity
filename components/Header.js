@@ -11,15 +11,16 @@ import { useGlobalState } from '../state'
 
 import NavItem from './NavItem';
 import Progress from './Progress';
+import { Line } from 'rc-progress';
 
 function Header() {
     const router = useRouter();
     const [recent] = useGlobalState('recent');
 
     return (
-        <div className='z-50 fixed top-0 w-screen bg-transparent backdrop-blur-xl py-3'>
+        <div className='z-50 fixed top-0 w-screen bg-black bg-opacity-30 md:bg-transparent backdrop-blur-xl py-3'>
             <div className='container mx-auto px-4'>
-                <div className='flex justify-between items-center align-middle'>
+                <div className='flex justify-between items-center align-middle '>
                     <div className='flex flex-row space-x-3'>
                         <NavItem to="/" active={ router.asPath == "/" } Content={() => (
                             <div className='flex items-center align-middle group px-4'>
