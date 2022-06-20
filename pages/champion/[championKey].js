@@ -60,7 +60,7 @@ const ChampionPage = () => {
     return (
         <div className='mt-56 lg:mt-36 flex flex-col justify-center lg:flex-row lg:space-x-4'>
             <div className='flex w-full flex-col align-middle'>
-                <div className='relative w-full mx-auto shadow-lg rounded-md z-0'>
+                <div className='relative w-full aspect-video mx-auto shadow-lg rounded-md z-0'>
                     <Image layout='fill' className='z-0 rounded-lg' objectPosition={'center'} src={`https://cdn.communitydragon.org/${version}/champion/${champion.key}/splash-art/centered`}/>
                 </div>
                 <div className='flex flex-col text-center -mt-6'>
