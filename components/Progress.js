@@ -19,11 +19,11 @@ function Progress() {
             <div className='text-xs font-mono uppercase'>
                 Progress
             </div>
-            <div className='font-bold -mt-2 text-4xl'>
+            <div className='font-bold -mt-2 text-3xl'>
                 {progress}%
             </div>
             <div className='w-full'>
-                <Line className='rounded-lg' strokeLinecap='butt' percent={progress} strokeWidth={15} trailWidth={15} trailColor="#000000aa" strokeColor="white" />
+                <Line className='rounded-lg' strokeLinecap='butt' percent={progress} strokeWidth={12} trailWidth={12} trailColor="#000000aa" strokeColor="white" />
             </div>
         </div>
     )

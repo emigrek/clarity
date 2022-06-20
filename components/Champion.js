@@ -2,6 +2,7 @@ import ChampionPortrait from './ChampionPortrait';
 import Link from 'next/link'
 import { useGlobalState } from '../state';
 import { Line } from 'rc-progress';
+import { SparklesIcon } from '@heroicons/react/solid'
 
 function Champion({champion}) {
     const [recent] = useGlobalState('recent');
@@ -29,8 +30,13 @@ function Champion({champion}) {
                 <div className="flex group hover:bg-opacity-80 flex-col text-center items-center space-y-2 transition-all duration-500 cursor-pointer bg-black rounded-lg px-2 py-3 bg-opacity-40 shadow-lg">
                     <ChampionPortrait champion={champion}/>
                     <span className="font-medium group-hover:opacity-100 transition-all duration-200 text-sm opacity-80">{champion.name}</span>
-                    <div className='w-3/4'>
-                        <Line className='rounded-sm' strokeLinecap='butt' percent={championProgressPercent()} strokeWidth={8} trailWidth={8} trailColor="#000000aa" strokeColor="rgb(252 211 77)" />
+                    <div className='flex w-full space-x-2 px-3 items-center'>
+                        <div className='w-3/4'>
+                            <Line className='rounded-sm' strokeLinecap='butt' percent={championProgressPercent()} strokeWidth={10} trailWidth={10} trailColor="#000000aa" strokeColor="rgb(252 211 77)" />
+                        </div>
+                        <div className={championProgressPercent() == 100 ? `relative w-4 h-4 text-amber-400` : `relative w-4 h-4 text-black`}>
+                            <SparklesIcon/>
+                        </div>
                     </div>
                 </div>
             </div>
