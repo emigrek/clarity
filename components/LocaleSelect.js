@@ -1,14 +1,6 @@
 import { setGlobalState, useGlobalState } from '../state'
-import dynamic from 'next/dynamic'
 import app from '../modules/app';
-
-const Select = dynamic(
-    () => import('react-select').then((mod) => mod.default),
-    {
-      ssr: false,
-      loading: () => null,
-    },
-  );
+import Select from 'react-select';
 
 function LocaleSelect() {
     const [locale] = useGlobalState("locale");

@@ -58,10 +58,10 @@ const ChampionPage = () => {
   
   if(champion)
     return (
-        <div className='mt-56 lg:mt-36 flex flex-col justify-center lg:flex-row lg:space-x-4'>
+        <div className='mt-28 lg:mt-36 xl:mt-40 flex flex-col justify-center lg:flex-row lg:space-x-4'>
             <div className='flex w-full flex-col align-middle'>
-                <div className='relative w-full aspect-video mx-auto shadow-lg rounded-md z-0'>
-                    <Image layout='fill' className='z-0 rounded-lg' objectPosition={'center'} src={`https://cdn.communitydragon.org/${version}/champion/${champion.key}/splash-art/centered`}/>
+                <div className='relative w-full aspect-video shadow-lg rounded-md'>
+                    <Image layout='fill' className='rounded-lg' objectPosition={'center'} src={`https://cdn.communitydragon.org/${version}/champion/${champion.key}/splash-art/centered`}/>
                 </div>
                 <div className='flex flex-col text-center -mt-6'>
                     <span className='text-5xl font-medium z-50'>{ champion.name }</span>

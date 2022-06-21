@@ -6,6 +6,12 @@ import { useEffect } from 'react';
 import ddragon from '../modules/ddragon';
 import app from '../modules/app';
 
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import '../styles/loader.css';
+
+Router.events.on('routeChangeStart', () => NProgress.start()); Router.events.on('routeChangeComplete', () => NProgress.done()); Router.events.on('routeChangeError', () => NProgress.done());
+
 function MyApp({ Component, pageProps }) {
   const [bgColor] = useGlobalState("bgColor");
   const [locales] = useGlobalState("locales");

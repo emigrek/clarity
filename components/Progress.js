@@ -16,7 +16,7 @@ function Progress() {
 
     return (
         <div className='flex flex-col align-middle items-center select-none'>
-            <div className='text-xs font-mono uppercase'>
+            <div className='text-[0.7rem] font-mono uppercase'>
                 Progress
             </div>
             <div className='font-bold -mt-2 text-3xl'>
