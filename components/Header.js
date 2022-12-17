@@ -24,7 +24,7 @@ function Header() {
                 <div className='flex justify-evenly items-center align-middle'>
                     <Link href="/">
                         <div className='flex text-2xl group justify-center space-x-1 items-center align-middle group cursor-pointer'>
-                            <div className='text-xl'>Spell</div><div className='text-sm px-2 py-2 rounded-lg bg-amber-400 group-hover:bg-amber-500 transition-colors duration-100 text-black font-black'>Hub</div>
+                            <div className='text-xl'>Spell</div><div className='shadow-lg text-sm px-2 py-2 rounded-lg bg-amber-400 group-hover:bg-amber-500 transition-colors duration-100 text-black font-black'>Hub</div>
                         </div>
                     </Link>  
                     <div className='flex flex-row space-x-3'>

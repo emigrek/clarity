@@ -1,11 +1,31 @@
-## Getting Started
+# ✨ Spellhub
+App for practicing spells in League of Legends.
 
-First, run the development server:
+## 📦 Used packages
+| 📦 Package  | 📋 Reasons |
+| ------------- | ------------- |
+| Next | react framework  |
+| Tailwind CSS  | css framework  |
+| Hero Icons | Icons |
+| Framer Motion | Animations |
+| chroma.js color.js | colors |
+| lodash | utils |
+| moment | time utils |
 
-```bash
-npm run dev
-# or
-yarn dev
+
+## 🚀 Running
+```
+git clone https://github.com/emigrek/spellhub
+cd spellhub
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run development server
+```
+npm run dev
+```
+or
+run production build
+```
+npm run build
+```

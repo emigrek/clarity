@@ -42,8 +42,8 @@ function Collection() {
     }, []);
 
     return (
-        <div className='flex flex-col items-center mt-20 w-full '>
-            <div className='flex items-center my-4 shadow-lg z-50'>
+        <div className='flex flex-col items-center mt-16 w-full'>
+            <div className='flex items-center space-x-6 align-middle my-4 z-50'>
                 <div className='flex items-center flex-shrink bg-black bg-opacity-50 rounded-xl px-4 py-1'>
                     <input onChange={(e) => setSearchQ(e.target.value)} placeholder="Search" className='bg-transparent text-white outline-none relative py-2'/>
                     <SearchIcon className='opacity-50 h-5 w-5'/>
